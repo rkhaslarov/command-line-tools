@@ -46,7 +46,8 @@ Description:
 
 Usage:
 
-	./update_mongodb.sh -d DB_NAME -h HOST -p PORT (as daemon, nohup $(./update_db.sh -d core >> /var/log/update_db.log) &)
+	./update_mongodb.sh -d DB_NAME -h HOST -p PORT 
+	(as daemon, nohup $(./update_db.sh -d core >> /var/log/update_db.log) &)
 
 Default values: 
 
