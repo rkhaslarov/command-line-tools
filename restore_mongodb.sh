@@ -64,7 +64,7 @@ then
 		for file in "${files[@]}";
 		do 
 			collection=`echo ${file} | cut -d'.' -f1`;
-			mongoimport --host=$host --port=$port --db $dbName  --collection $collection --file ./${backup_name}/${file}  > /dev/null
+			mongoimport --host=$host --port=$port --db $dbName  --collection $collection --file ./${backup_name}/${file} --quiet
 			printf "File: %s OK \n" "$file"  
 		done
 

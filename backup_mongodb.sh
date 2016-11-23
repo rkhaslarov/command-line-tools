@@ -59,7 +59,7 @@ then
 
 	   	for collection in "${collections[@]}";
 		do 
-			mongoexport --host=$host --port=$port --db $dbName  --collection $collection --out ./${folder_name}/${collection}.json  > /dev/null
+			mongoexport --host=$host --port=$port --db $dbName  --collection $collection --out ./${folder_name}/${collection}.json --quiet
 			printf "Collection: %s OK \n" "$collection"  
 		done
 
