@@ -14,13 +14,23 @@ Default values:
 # MongoDB Restore
 
 Description:
+
 	This shell script is used for restoring collections from backup to current database.
+
 Usage:
-	./restore_mongodb.sh -d DB_NAME -h HOST -p PORT -b BACKUP_FOLDER (for example, ./restore_mongodb.sh -d core -h localhost -p 3001 -b 22-11-16-1479840325)
+
+	./restore_mongodb.sh -d DB_NAME -h HOST -p PORT -b BACKUP_FOLDER 
+
+	(for example, ./restore_mongodb.sh -d core -h localhost -p 3001 -b 22-11-16-1479840325)
+
 Default values: 
+
 	DB_NAME - test;
+
 	HOST - localhost;
+
 	PORT - 27017;
+	
 	BACKUP_FOLDER - the latest backup.
 
 # MongoDB Update (with scripts)
