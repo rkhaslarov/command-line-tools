@@ -1,23 +1,17 @@
 #!/bin/bash
-# Команда для локального использования: ./update_db.sh -d DB_NAME -h HOST -p PORT
-# Команда для использования на сервере: $(./update_db.sh -d core >> /var/log/update_db.log) &
 
-# Демон по обновлению БД. 
-
-# Использование: 
-# В папке со скриптом есть папка /tmp, в ней разработчик создает/вставляет скрипт с расширением .js для MongoDB.
-# Название скрипта должно иметь следующий формат yyyymmdd-nn-name.js (20161123-02-addrecords.js) 
-# и не должно содержать символов пробела.
-
-# Внутри должен содержаться код Mongo Shell. Например,
-# 	db.foo.insert({name : "wade", position : "guard"});
-# 	db.foo.insert({name : "wade2", position : "guard2"}); 
-
-# Учтите, скрипты запускаются демоном в сортированном порядке (сначало 20161123-01-createfoocollection.js, 
-# затем 20161123-02-addrecords.js и т.д.).
-
-# Резервное копирование: после обработки и запуска скрипта, он перемещается в папку _old.
-# Логирование: все операции пишутся в update_db.log.
+# Description:
+# 	This shell script is used for watching and executing mongo shell scripts to update mongodb database.
+# 	You must copy your scripts into tmp folder, then daemon sort and execute them and move into _old folder.
+# 	Script's extension must be .js and it's name should not contain any spaces.
+# 	Example of script,
+# 		db.foo.insert({name : "bar", position : "baz"}); 
+# Usage:
+# 	./update_mongodb.sh -d DB_NAME -h HOST -p PORT (as daemon, nohup $(./update_db.sh -d core >> /var/log/update_db.log) &)
+# Default values: 
+# 	DB_NAME - test;
+# 	HOST - localhost;
+# 	PORT - 27017;
 
 while getopts ":d:h:p:" opt; do
   case $opt in

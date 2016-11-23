@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Скрипт backup-a БД для разработчиков портала готов. Скрипт лежит в папке collections-backup, называется backup_db.sh.
-# Команда запуска: ./backup_db.sh -d DB_NAME -h HOST -p PORT (например, ./backup_db.sh -d core -h localhost -p 3001).
-# Значения по умолчанию:
-# DB_NAME - test;
-# HOST - localhost;
-# PORT - 27017;
+# Description:
+# 	This shell script is used for full backuping of all collections in current database.
+# Usage:
+# 	./backup_mongodb.sh -d DB_NAME -h HOST -p PORT (for example, ./backup_mongodb.sh -d core -h localhost -p 3001)
+# Default values: 
+# 	DB_NAME - test;
+# 	HOST - localhost;
+# 	PORT - 27017.
 
 while getopts ":d:h:p:" opt; do
   case $opt in

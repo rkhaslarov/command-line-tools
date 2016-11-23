@@ -1,18 +1,14 @@
 #!/bin/bash
 
-# Команда запуска: ./setupdb.sh -d DB_NAME -h HOST -p PORT -b BACKUP_FOLDER
-
-# Решил сделать скрипт с поддержкой ключей, так как задаю значения по умолчанию при отсутствии значения.
-# Кроме, того скрипт проверяет работает ли сервер MongoDB. Любой из аргументов можно опустить, тогда автоматически
-# будет подставлено значение по умолчанию (см. ниже). Также, для того чтобы добавить новую коллекцию достаточно сбросить 
-# ее json в папку с нужным Вам backup-ом, скрипт создаст ее автоматически.
-
-# Значения по умолчанию:
-
-# DB_NAME - test;
-# HOST - localhost;
-# PORT - 27017;
-# BACKUP_FOLDER - последний backup в текущей папке.
+# Description:
+# 	This shell script is used for restoring collections from backup to current database.
+# Usage:
+# 	./restore_mongodb.sh -d DB_NAME -h HOST -p PORT -b BACKUP_FOLDER (for example, ./restore_mongodb.sh -d core -h localhost -p 3001 -b 22-11-16-1479840325)
+# Default values: 
+# 	DB_NAME - test;
+# 	HOST - localhost;
+# 	PORT - 27017;
+# 	BACKUP_FOLDER - the latest backup.
 
 while getopts ":d:h:p:b:" opt; do
   case $opt in
